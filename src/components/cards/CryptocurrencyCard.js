@@ -1,5 +1,7 @@
 import { StyleSheet, Image,  View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 const CryptocurrencyCard = ({token}) => {
   return (
@@ -31,9 +33,12 @@ const CryptocurrencyCard = ({token}) => {
           <Text style={styles.coinPrice}>
             {token?.price}
           </Text>
+          {token?.profit > 0 ? <Ionicons name="caret-up" color="limegreen" size={22} /> : <Ionicons name="caret-down" color="red" size={22} />}
           <Text style={styles.coinPercentage}>
-            {token?.profit}
+          
+            {token.profit > 0 ? (<Text style={{color: 'limegreen'}}>{token.profit}%</Text>) : (<Text style={{color: 'red'}}>{token.profit}%</Text>)}
           </Text>
+          {token?.profit > 0 ? (<Text style={{color: 'limegreen'}}>{token?.profit}%</Text>) : (<Text style={{color: 'red'}}>{token?.profit}%</Text>)}
         </View>
       </View>
     </TouchableOpacity>
@@ -52,10 +57,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#fff',
     height: 60,
-    marginVertical: 2,
-    paddingHorizontal: 6,
+    marginVertical: 4,
+    paddingHorizontal: 14,
+    borderRadius: 10,
   },
   leftContainer: {
     flexDirection: 'row',
@@ -64,14 +70,16 @@ const styles = StyleSheet.create({
   logoContainer: {
     width: 50,
     height: 50,
-    backgroundColor: '#fff',
-    borderRadius: 5,
+    padding: 6,
+    backgroundColor: '#191919',
+    borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
   },
   leftTextContainer: {
     marginLeft: 8,
     justifyContent: 'space-between',
+    paddingVertical: 4,
   },
   coinName: {
     textTransform: 'uppercase',
@@ -89,9 +97,11 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end', 
     justifyContent: 'space-between',
     height: "100%",
+    paddingVertical: 12,
   },
   coinPrice: {
-    fontSize: 15
+    fontSize: 15,
+    fontWeight: 800,
   },
   coinPercentage: {
     fontSize: 15
