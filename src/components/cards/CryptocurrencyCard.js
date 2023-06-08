@@ -33,12 +33,11 @@ const CryptocurrencyCard = ({token}) => {
           <Text style={styles.coinPrice}>
             {token?.price}
           </Text>
-          {token?.profit > 0 ? <Ionicons name="caret-up" color="limegreen" size={22} /> : <Ionicons name="caret-down" color="red" size={22} />}
-          <Text style={styles.coinPercentage}>
           
+          <View style={{flexDirection: 'row'}}>
+            {token.profit > 0 ? <Ionicons name="caret-up" color="limegreen" size={20} style={styles.caret}/> : <Ionicons name="caret-down" color="red" size={20} />}
             {token.profit > 0 ? (<Text style={{color: 'limegreen'}}>{token.profit}%</Text>) : (<Text style={{color: 'red'}}>{token.profit}%</Text>)}
-          </Text>
-          {token?.profit > 0 ? (<Text style={{color: 'limegreen'}}>{token?.profit}%</Text>) : (<Text style={{color: 'red'}}>{token?.profit}%</Text>)}
+          </View>
         </View>
       </View>
     </TouchableOpacity>

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TextInput,SafeAreaView, ScrollView, FlatList, ActivityIndicator, } from 'react-native'
+import { StyleSheet, View, Text, TextInput,SafeAreaView, TouchableOpacity, ScrollView, FlatList, ActivityIndicator, } from 'react-native'
 import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CryptocurrencyCard from '../components/cards/CryptocurrencyCard';
@@ -8,96 +8,99 @@ const data = [
     name: 'bitcoin',
     price: '$ 26K',
     cap: '36B',
-    profit: '+ 2.4',
+    profit:+ 2.4
   },
   {
     name: 'ethereum',
     price: '$ 26K',
     cap: '36B',
-    profit: '-2.4',
+    profit: -2.4,
   },
   {
     name: 'usdt',
     price: '$ 26K',
     cap: '36B',
-    profit: '+ 2.4',
+    profit: + 2.4,
   },
   {
     name: 'bnb',
     price: '$ 26K',
     cap: '36B',
-    profit: '-2.4',
+    profit: -2.4,
   },
   {
     name: 'polygon',
     price: '$ 26K',
     cap: '36B',
-    profit: '-2.4',
+    profit: -2.4,
   },
   {
     name: 'solana',
     price: '$ 26K',
     cap: '36B',
-    profit: '+ 2.4',
+    profit: + 2.4,
   },
   {
     name: 'ada',
     price: '$ 26K',
     cap: '36B',
-    profit: '-2.4',
+    profit: -2.4,
   },
   {
     name: 'litecoin',
     price: '$ 26K',
     cap: '36B',
-    profit: '-2.4',
+    profit: -2.4,
   },
   {
     name: 'aida',
     price: '$ 26K',
     cap: '36B',
-    profit: '+ 2.4',
+    profit: + 2.4,
   },
   {
     name: 'lorna',
     price: '$ 26K',
     cap: '36B',
-    profit: '-2.4',
+    profit: -2.4,
   },
   {
     name: 'fe',
     price: '$ 26K',
     cap: '36B',
-    profit: '-2.4',
+    profit: -2.4,
   },
   {
     name: 'cron',
     price: '$ 26K',
     cap: '36B',
-    profit: '+ 2.4',
+    profit: + 2.4,
   },
   {
     name: 'keppel',
     price: '$ 26K',
     cap: '36B',
-    profit: '-2.4',
+    profit: -2.4,
   },
   {
     name: 'murnia',
     price: '$ 26K',
     cap: '36B',
-    profit: '+ 2.4',
+    profit: + 2.4,
   },
 ]
 
-const CryptocurrencyScreen = () => {
+const CryptocurrencyScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{flex:1, justifyContent:'center',alignItems:'center',}}>
+    <SafeAreaView style={{flex:1, justifyContent:'center',alignItems:'center',backgroundColor: '#7b00ff'}}>
       <View style={styles.headerWrapper}>
         <View style={styles.container}>
           <Text style={styles.title}>
             Top 100 Cryptocurrencies
           </Text>
+          <TouchableOpacity onPress={() => navigation.openDrawer()} style={{width: '50%', }}>
+            <Ionicons name="list-circle-outline" color="#fff" size={36} style={{textAlign: 'right'}}/>
+          </TouchableOpacity>
         </View>
         <View style={styles.searchWrapper}>
           <Ionicons name="search-outline" size={22}  />
@@ -125,29 +128,33 @@ const styles = StyleSheet.create({
     padding: 14, 
     flexDirection: 'column', 
     flex: 1, 
-    marginVertical: 40,
-    height: 80, 
-    backgroundColor: '#7b00ff', 
-    height: 10,
+    marginTop: 20,
+    marginBottom: 60,
+    height: 80,
   },
   container: {
     width: '100%',
-    marginBottom: 6,
-    height: 30,
-    backgroundColor: '#7b00ff',
+    marginBottom: 14,
+    height: 33,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   title: {
-    fontSize: 20,
+    fontSize: 25,
+    color: '#fff',
+    fontWeight: 600,
+    width: '50%',
   },
   searchWrapper: {
     flexDirection: 'row' ,
     justifyContent:'center',
     alignItems:'center', 
-    backgroundColor: 'gray', 
+    backgroundColor: '#fff', 
     width: '100%', 
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 3,
+    borderRadius: 10,
     height: 50,
   },
   searchInput: {
