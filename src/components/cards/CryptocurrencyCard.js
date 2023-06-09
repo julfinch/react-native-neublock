@@ -34,7 +34,7 @@ const CryptocurrencyCard = ({token}) => {
             {token?.price}
           </Text>
           
-          <View style={{flexDirection: 'row'}}>
+          <View style={styles.coinPercentage}>
             {token.profit > 0 ? <Ionicons name="caret-up" color="limegreen" size={20} style={styles.caret}/> : <Ionicons name="caret-down" color="red" size={20} />}
             {token.profit > 0 ? (<Text style={{color: 'limegreen'}}>{token.profit}%</Text>) : (<Text style={{color: 'red'}}>{token.profit}%</Text>)}
           </View>
@@ -48,19 +48,21 @@ export default CryptocurrencyCard
 
 const styles = StyleSheet.create({
   logoImage: {
-    width: "70%",
-    height: "70%",
+    width: "100%",
+    height: "100%",
   },
   container: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#2A2B54',
     height: 60,
     marginVertical: 4,
     paddingHorizontal: 14,
     borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#32385E',
   },
   leftContainer: {
     flexDirection: 'row',
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
   logoContainer: {
     width: 50,
     height: 50,
-    padding: 6,
+    padding: 0,
     backgroundColor: '#191919',
     borderRadius: 50,
     justifyContent: "center",
@@ -82,11 +84,13 @@ const styles = StyleSheet.create({
   },
   coinName: {
     textTransform: 'uppercase',
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: 800,
+    color: '#fff',
   },
   coinVolume: {
-    fontSize: 15
+    fontSize: 15,
+    color: '#fff',
   },
   rightContainer: {
     width: '50%',
@@ -96,13 +100,14 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end', 
     justifyContent: 'space-between',
     height: "100%",
-    paddingVertical: 12,
+    paddingVertical: 8,
   },
   coinPrice: {
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: 800,
+    color: '#fff',
   },
   coinPercentage: {
-    fontSize: 15
+    flexDirection: 'row'
   },
 });

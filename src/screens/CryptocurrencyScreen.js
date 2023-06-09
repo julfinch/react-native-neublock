@@ -98,8 +98,8 @@ const CryptocurrencyScreen = ({navigation}) => {
           <Text style={styles.title}>
             Top 100 Cryptocurrencies
           </Text>
-          <TouchableOpacity onPress={() => navigation.openDrawer()} style={{width: '50%', }}>
-            <Ionicons name="list-circle-outline" color="#fff" size={36} style={{textAlign: 'right'}}/>
+          <TouchableOpacity onPress={() => navigation.openDrawer()} style={{width: '10%', }}>
+            <Ionicons name="list-circle-outline" color="#fff" size={33} style={{textAlign: 'right'}}/>
           </TouchableOpacity>
         </View>
         <View style={styles.searchWrapper}>
@@ -107,7 +107,7 @@ const CryptocurrencyScreen = ({navigation}) => {
           <TextInput style={styles.searchInput} placeholder='Enter token name' keyboardType="default"/>
         </View>
       </View>
-      <ScrollView style={{padding: 7, flexDirection: 'column', marginTop: 40, backgroundColor: '#c4c4c4'}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{padding: 7, flexDirection: 'column', marginTop: 40, backgroundColor: '#212244'}} showsVerticalScrollIndicator={false}>
         <View style={{paddingBottom: 20,}}>
           {data?.map((token) => (
               <CryptocurrencyCard
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#fff',
     fontWeight: 600,
-    width: '50%',
+    width: '90%',
   },
   searchWrapper: {
     flexDirection: 'row' ,
