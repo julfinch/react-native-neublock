@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, TextInput,SafeAreaView, TouchableOpacity, ScrollView, FlatList, ActivityIndicator, } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CryptocurrencyCard from '../components/cards/CryptocurrencyCard';
 
@@ -91,8 +91,17 @@ const data = [
 ]
 
 const CryptocurrencyScreen = ({navigation}) => {
+  const [cryptos, setCryptos] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+
+  useEffect(() => {
+    setCryptos(data)
+    const filteredData = data.filter((item) => item.name.toLowerCase().includes(searchTerm));
+    setCryptos(filteredData)
+  }, [data, searchTerm])
+  
   return (
-    <SafeAreaView style={{flex:1, justifyContent:'center',alignItems:'center',backgroundColor: '#7b00ff'}}>
+    <SafeAreaView style={styles.safeAreaViewWrapper}>
       <View style={styles.headerWrapper}>
         <View style={styles.container}>
           <Text style={styles.title}>
@@ -104,12 +113,12 @@ const CryptocurrencyScreen = ({navigation}) => {
         </View>
         <View style={styles.searchWrapper}>
           <Ionicons name="search-outline" size={22}  />
-          <TextInput style={styles.searchInput} placeholder='Enter token name' keyboardType="default"/>
+          <TextInput style={styles.searchInput} placeholder='Enter token name' onChangeText={(text) => setSearchTerm(text.toLowerCase())}/>
         </View>
       </View>
-      <ScrollView style={{padding: 7, flexDirection: 'column', marginTop: 40, backgroundColor: '#212244'}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.scrollViewWrapper} showsVerticalScrollIndicator={false}>
         <View style={{paddingBottom: 20,}}>
-          {data?.map((token) => (
+          {cryptos?.map((token) => (
               <CryptocurrencyCard
                 token={token}
                 key={token.name}
@@ -124,24 +133,27 @@ const CryptocurrencyScreen = ({navigation}) => {
 export default CryptocurrencyScreen
 
 const styles = StyleSheet.create({
+  safeAreaViewWrapper: {
+    flex:1, 
+    backgroundColor: '#7b00ff'
+  },
   headerWrapper: {
-    padding: 14, 
+    paddingHorizontal: 8, 
     flexDirection: 'column', 
     flex: 1, 
-    marginTop: 20,
-    marginBottom: 60,
-    height: 80,
+    marginTop: 30,
+    marginBottom: 0,
+    minHeight: 110,
   },
   container: {
     width: '100%',
     marginBottom: 14,
-    height: 33,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     color: '#fff',
     fontWeight: 600,
     width: '90%',
@@ -161,6 +173,12 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     paddingHorizontal: 8,
-
+  },
+  scrollViewWrapper: {
+    padding: 7, 
+    flexDirection: 'column', 
+    backgroundColor: '#212244', 
+    width: '100%', 
+    minHeight: '80%'
   }
 });
