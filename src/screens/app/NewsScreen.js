@@ -6,19 +6,15 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const NewsScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{flex:1, backgroundColor: '#212244'}}>
+    <SafeAreaView style={styles.safeAreaViewWrapper}>
       <View style={styles.headerWrapper}>
-        <View style={styles.container}>
+        <View style={styles.navButtonContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Cryptocurrency')}>
               <Ionicons name="chevron-back-outline" color="#fff" size={33}/>
             </TouchableOpacity>
-          
-
-          
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
               <Ionicons name="list-circle-outline" color="#fff" size={33}/>
             </TouchableOpacity>
-          
         </View>
       </View>
       <Text>NewsScreen</Text>
@@ -30,14 +26,23 @@ const NewsScreen = ({navigation}) => {
 export default NewsScreen
 
 const styles = StyleSheet.create({
+  safeAreaViewWrapper: {
+    flex:1, 
+    backgroundColor: '#212244',
+    padding: 8,
+  },
   headerWrapper: {
+    marginTop: 16,
+    paddingHorizontal: 8, 
     flexDirection: 'column', 
     flex: 1, 
-    marginTop: 20,
-    marginBottom: 60,
-    height: 80,
+    maxHeight: 200,
+    backgroundColor: '#2A2B54',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#32385E',
   },
-  container: {
+  navButtonContainer: {
     width: '100%',
     marginBottom: 14,
     height: 33,

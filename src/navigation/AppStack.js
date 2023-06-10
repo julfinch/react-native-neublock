@@ -4,12 +4,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import HomeScreen from '../screens/HomeScreen';
-import GlobalScreen from '../screens/GlobalScreen';
-import ChartScreen from '../screens/ChartScreen';
-import CryptocurrencyScreen from '../screens/CryptocurrencyScreen';
-import NewsScreen from '../screens/NewsScreen';
-import NftScreen from '../screens/NftScreen';
+import HomeScreen from '../screens/app/HomeScreen';
+import GlobalScreen from '../screens/app/GlobalScreen';
+import ChartScreen from '../screens/app/ChartScreen';
+import CryptocurrencyScreen from '../screens/app/CryptocurrencyScreen';
+import NewsScreen from '../screens/app/NewsScreen';
+import NftScreen from '../screens/app/NftScreen';
 
 import CustomDrawer from '../components/CustomDrawer';
 

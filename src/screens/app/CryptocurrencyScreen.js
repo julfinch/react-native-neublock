@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CryptocurrencyCard from '../components/cards/CryptocurrencyCard';
 
+
 const data = [
   {
     name: 'bitcoin',
@@ -89,6 +90,7 @@ const data = [
     profit: + 2.4,
   },
 ]
+
 
 const CryptocurrencyScreen = ({navigation}) => {
   const [cryptos, setCryptos] = useState([])

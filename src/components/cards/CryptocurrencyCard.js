@@ -1,7 +1,22 @@
 import { StyleSheet, Image,  View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Sparkline from 'react-native-sparkline'
 
+
+const sparkline = [
+  9515.0454185372,
+  9540.1812284677,
+  9554.2212643043,
+  9593.571539283,
+  9592.8596962985,
+  9562.5310295967,
+  9556.7860427046,
+  9388.823394515,
+  9335.3004209165,
+  9329.4331700521,
+  9370.9993109108,
+]
 
 const CryptocurrencyCard = ({token}) => {
   return (
@@ -27,6 +42,11 @@ const CryptocurrencyCard = ({token}) => {
         </View>
       </View>
 
+      {/* SPARK LINE */}
+      <Sparkline data={sparkline}>
+        <Sparkline.Fill />
+      </Sparkline>
+      
       {/* RIGHT SIDE */}
       <View style={styles.rightContainer}>
         <View style={styles.rightTextContainer}>
