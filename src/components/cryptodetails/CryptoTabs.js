@@ -37,18 +37,16 @@ export default CryptoTabs;
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 10,
-        marginBottom: 10,
+        marginVertical: 10,
     },
     btn: (name, activeTab) => ({
         flexDirection: 'row',
         justifyContent: 'center',
         paddingVertical: 12,
-        paddingHorizontal: 0,
         backgroundColor: name === activeTab ? "#7b00ff" : "#3d3652",
         borderRadius: 10,
-        shadowColor: "#000",
-        width: 90,
+        minWidth: 90,
+        maxHeight: '100%',
         // shadowOffset: {
         // width: 5,
         // height: 2,

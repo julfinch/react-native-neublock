@@ -1,100 +1,158 @@
-import { StyleSheet, View, Text, TextInput,SafeAreaView, TouchableOpacity, ScrollView, FlatList, ActivityIndicator, } from 'react-native'
+import { StyleSheet, Pressable, View, Text, TextInput,SafeAreaView, TouchableOpacity, ScrollView, FlatList, ActivityIndicator, } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CryptocurrencyCard from '../../components/cards/CryptocurrencyCard';
-
+import { useNavigation } from "@react-navigation/native";
 
 const data = [
   {
-    name: 'bitcoin',
-    price: '$ 26K',
-    cap: '36B',
-    profit:+ 2.4
+    uuid:"Qwsogvtv82FCd",
+    symbol:"BTC",
+    name:"Bitcoin",
+    description:"Bitcoin is the first decentralized digital currency.",
+    color:"#f7931A",
+    iconUrl:"https://cdn.coinranking.com/Sy33Krudb/btc.svg",
+    websiteUrl:"https://bitcoin.org",
+    supply: {
+      circulating:"17009275",
+      total:"21000000",
+      },
+    dailyVolume:"6818750000",
+    marketCap:"159393904304",
+    price:"25656.9993109108",
+    btcPrice:"1",
+    change:"-0.52",
+    rank:1,
+    links:[
+      {
+        name:"Bitcoin",
+        url:"https://www.reddit.com/r/Bitcoin/",
+        type:"reddit",
+      },
+      {
+        name:"Bitcoin",
+        url:"https://www.reddit.com/r/Bitcoin/",
+        type:"linkedin",
+      },
+      {
+        name:"Bitcoin",
+        url:"https://www.reddit.com/r/Bitcoin/",
+        type:"youtube",
+      },
+      {
+        name:"Bitcoin",
+        url:"https://www.reddit.com/r/Bitcoin/",
+        type:"website",
+      },
+    ],
+    numberOfMarkets:9800,
+    numberOfExchanges:190,
+    sparkline: 
+    [
+      9515.0454185372,
+      9540.1812284677,
+      9554.2212643043,
+      9593.571539283,
+      9592.8596962985,
+      9562.5310295967,
+      9556.7860427046,
+      9388.823394515,
+      9335.3004209165,
+      9329.4331700521,
+      9370.9993109108,
+    ],
+    allTimeHigh: {
+      price:"19500.471361532",
+      timestamp:1513555200,
+    },
+    coinrankingUrl:"https://coinranking.com/coin/Qwsogvtv82FCd+bitcoin-btc",
+    
   },
   {
     name: 'ethereum',
     price: '$ 26K',
-    cap: '36B',
-    profit: -2.4,
+    marketCap: '36B',
+    change: -2.4,
   },
   {
     name: 'usdt',
     price: '$ 26K',
-    cap: '36B',
-    profit: + 2.4,
+    marketCap: '36B',
+    change: + 2.4,
   },
   {
     name: 'bnb',
     price: '$ 26K',
-    cap: '36B',
-    profit: -2.4,
+    marketCap: '36B',
+    change: -2.4,
   },
   {
     name: 'polygon',
     price: '$ 26K',
-    cap: '36B',
-    profit: -2.4,
+    marketCap: '36B',
+    change: -2.4,
   },
   {
     name: 'solana',
     price: '$ 26K',
-    cap: '36B',
-    profit: + 2.4,
+    marketCap: '36B',
+    change: + 2.4,
   },
   {
     name: 'ada',
     price: '$ 26K',
-    cap: '36B',
-    profit: -2.4,
+    marketCap: '36B',
+    change: -2.4,
   },
   {
     name: 'litecoin',
     price: '$ 26K',
-    cap: '36B',
-    profit: -2.4,
+    marketCap: '36B',
+    change: -2.4,
   },
   {
     name: 'aida',
     price: '$ 26K',
-    cap: '36B',
-    profit: + 2.4,
+    marketCap: '36B',
+    change: + 2.4,
   },
   {
     name: 'lorna',
     price: '$ 26K',
-    cap: '36B',
-    profit: -2.4,
+    marketCap: '36B',
+    change: -2.4,
   },
   {
     name: 'fe',
     price: '$ 26K',
-    cap: '36B',
-    profit: -2.4,
+    marketCap: '36B',
+    change: -2.4,
   },
   {
     name: 'cron',
     price: '$ 26K',
-    cap: '36B',
-    profit: + 2.4,
+    marketCap: '36B',
+    change: + 2.4,
   },
   {
     name: 'keppel',
     price: '$ 26K',
-    cap: '36B',
-    profit: -2.4,
+    marketCap: '36B',
+    change: -2.4,
   },
   {
     name: 'murnia',
     price: '$ 26K',
-    cap: '36B',
-    profit: + 2.4,
+    marketCap: '36B',
+    change: + 2.4,
   },
 ]
 
 
-const CryptocurrencyScreen = ({navigation}) => {
+const CryptocurrencyScreen = () => {
   const [cryptos, setCryptos] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+  const navigation = useNavigation();
 
   useEffect(() => {
     setCryptos(data)
@@ -119,14 +177,15 @@ const CryptocurrencyScreen = ({navigation}) => {
         </View>
       </View>
       <ScrollView style={styles.scrollViewWrapper} showsVerticalScrollIndicator={false}>
-        <View style={{paddingBottom: 20,}}>
+        <Pressable style={{paddingBottom: 20,}}>
           {cryptos?.map((token) => (
               <CryptocurrencyCard
                 token={token}
                 key={token.name}
+                handleNavigate={() => navigation.navigate("News", {coinId: token.uuid})}
               />
             ))}
-        </View>
+        </Pressable>
       </ScrollView>
     </SafeAreaView>
   )

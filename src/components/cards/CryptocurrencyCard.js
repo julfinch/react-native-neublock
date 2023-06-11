@@ -1,7 +1,7 @@
 import { StyleSheet, Image,  View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import millify from 'millify';
 
 const sparkline = [
   9515.0454185372,
@@ -17,9 +17,9 @@ const sparkline = [
   9370.9993109108,
 ]
 
-const CryptocurrencyCard = ({token}) => {
+const CryptocurrencyCard = ({token, handleNavigate }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={handleNavigate}>
       {/* LEFT SIDE */}
       <View style={styles.leftContainer}>
         <View style={styles.logoContainer}>
@@ -36,7 +36,7 @@ const CryptocurrencyCard = ({token}) => {
             {token?.name}
           </Text>
           <Text style={styles.coinVolume}>
-            {token?.cap}
+            {token?.marketCap && millify(token?.marketCap)}
           </Text>
         </View>
       </View>
@@ -46,12 +46,12 @@ const CryptocurrencyCard = ({token}) => {
       <View style={styles.rightContainer}>
         <View style={styles.rightTextContainer}>
           <Text style={styles.coinPrice}>
-            {token?.price}
+            ${token?.price && millify(token?.price)}
           </Text>
           
           <View style={styles.coinPercentage}>
-            {token.profit > 0 ? <Ionicons name="caret-up" color="limegreen" size={20} style={styles.caret}/> : <Ionicons name="caret-down" color="red" size={20} />}
-            {token.profit > 0 ? (<Text style={{color: 'limegreen'}}>{token.profit}%</Text>) : (<Text style={{color: 'red'}}>{token.profit}%</Text>)}
+            {token.change > 0 ? <Ionicons name="caret-up" color="limegreen" size={20} style={styles.caret}/> : <Ionicons name="caret-down" color="red" size={20} />}
+            {token.change > 0 ? (<Text style={{color: 'limegreen'}}>{token.change}%</Text>) : (<Text style={{color: 'red'}}>{token.change}%</Text>)}
           </View>
         </View>
       </View>

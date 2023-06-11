@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import millify from 'millify';
 import { Value, About, CryptoTabs, Stats } from '../../components';
 import {ChartDot, ChartPath, ChartPathProvider, ChartYLabel, monotoneCubicInterpolation} from '@rainbow-me/animated-charts';
+import { useRoute } from "@react-navigation/native";
 
 export const {width: SIZE} = Dimensions.get('window');
 
@@ -100,6 +101,10 @@ const token =
 
 const NewsScreen = ({navigation}) => {
   const coin = token;
+  const route = useRoute();
+  const {
+    params: { coinId },
+  } = route;
   const stats = [
     { title: 'Price to USD', value: `$ ${coin?.price && millify(coin?.price)}`, icon: <Ionicons name="logo-usd" color="#fff" size={14}/> },
     { title: 'Rank', value: coin?.rank, icon: <Ionicons name="medal-outline" color="#fff" size={14}/> },
@@ -161,14 +166,17 @@ const NewsScreen = ({navigation}) => {
               <Ionicons name="chevron-back-outline" color="#fff" size={33}/>
             </TouchableOpacity>
             <View>
-              <Text style={styles.title}>{coin?.name}</Text>
+              <Text style={styles.title}>{coin?.name}{coinId}</Text>
             </View>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
               <Ionicons name="list-circle-outline" color="#fff" size={33}/>
             </TouchableOpacity>
         </View>
 
-        {/* PRICE CHANGE */}
+      </View>
+      <>
+        <ScrollView style={styles.scrollViewWrapper} showsVerticalScrollIndicator={false}>
+          {/* PRICE CHANGE */}
         <View style={styles.headerStats}>
           <Text style={styles.price}>
             ${coin?.price && millify(coin?.price)}
@@ -177,24 +185,21 @@ const NewsScreen = ({navigation}) => {
             change={coin?.change}
           />
         </View>
-      </View>
-      
-      {/* CHART */}
-      {/* <ChartPathProvider data={{ points, smoothingStrategy: 'bezier' }}>
-        <ChartYLabel format={formatUSD} style={{backgroundColor: 'black', color: 'green', margin: 4,}}/>
-        <View style={styles.chartWrapper}>
-          <ChartPath height={SIZE / 2} stroke="white" width={SIZE} />
-      <ChartDot style={{ backgroundColor: 'yellow' }} />
+        {/* CHART */}
+        <View style={styles.chartViewWrapper}>
+
         </View>
-      
-    </ChartPathProvider> */}
-      
-      {/* JOB TABS */}
-      
-      <>
-        <ScrollView showsVerticalScrollIndicator={false}
-        >
-            <View style={{ padding: 16, paddingBottom: 100 }}>
+        {/* <ChartPathProvider data={{ points, smoothingStrategy: 'bezier' }}>
+          <ChartYLabel format={formatUSD} style={{backgroundColor: 'black', color: 'green', margin: 4,}}/>
+          <View style={styles.chartWrapper}>
+            <ChartPath height={SIZE / 2} stroke="white" width={SIZE} />
+        <ChartDot style={{ backgroundColor: 'yellow' }} />
+          </View>
+        
+      </ChartPathProvider> */}
+        
+        {/* JOB TABS */}
+            <View style={{ padding: 16,}}>
               <CryptoTabs
                 tabs={tabs}
                 activeTab={activeTab}
@@ -215,15 +220,16 @@ export default NewsScreen
 const styles = StyleSheet.create({
   safeAreaViewWrapper: {
     flex:1, 
+    backgroundColor: '#1c1d42',
+    paddingTop: 8,
+  },
+  scrollViewWrapper: {
     backgroundColor: '#212244',
-    padding: 8,
   },
   headerWrapper: {
     marginTop: 16,
     paddingHorizontal: 8, 
     flexDirection: 'column', 
-    flex: 1, 
-    maxHeight: 290,
   },
   navButtonContainer: {
     width: '100%',
@@ -247,7 +253,8 @@ const styles = StyleSheet.create({
   headerStats: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 5,
+    paddingTop: 10,
+    paddingHorizontal: 13,
   },
   coinPercentage: (change) => ({
     color: '#fff',
@@ -266,6 +273,9 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#fff',
     fontWeight: 800,
+  },
+  chartViewWrapper: {
+    height: 290,
   },
   chartWrapper: {
     marginTop: 40,
