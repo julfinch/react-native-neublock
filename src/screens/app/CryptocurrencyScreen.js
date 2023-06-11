@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, TextInput,SafeAreaView, TouchableOpacity, ScrollView, FlatList, ActivityIndicator, } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import CryptocurrencyCard from '../components/cards/CryptocurrencyCard';
+import CryptocurrencyCard from '../../components/cards/CryptocurrencyCard';
 
 
 const data = [
