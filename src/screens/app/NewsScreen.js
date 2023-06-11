@@ -1,8 +1,11 @@
-import { StyleSheet, View, Text, Button, SafeAreaView, TouchableOpacity, ScrollView, RefreshControl, ActivityIndicator } from 'react-native'
+import { Dimensions, StyleSheet, View, Text, Button, SafeAreaView, TouchableOpacity, ScrollView, RefreshControl, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import millify from 'millify';
 import { Value, About, CryptoTabs, Stats } from '../../components';
+import {ChartDot, ChartPath, ChartPathProvider, ChartYLabel, monotoneCubicInterpolation} from '@rainbow-me/animated-charts';
+
+export const {width: SIZE} = Dimensions.get('window');
 
 const token = 
   {
@@ -23,6 +26,28 @@ const token =
     btcPrice:"1",
     change:"-0.52",
     rank:1,
+    links:[
+      {
+        name:"Bitcoin",
+        url:"https://www.reddit.com/r/Bitcoin/",
+        type:"reddit",
+      },
+      {
+        name:"Bitcoin",
+        url:"https://www.reddit.com/r/Bitcoin/",
+        type:"linkedin",
+      },
+      {
+        name:"Bitcoin",
+        url:"https://www.reddit.com/r/Bitcoin/",
+        type:"youtube",
+      },
+      {
+        name:"Bitcoin",
+        url:"https://www.reddit.com/r/Bitcoin/",
+        type:"website",
+      },
+    ],
     numberOfMarkets:9800,
     numberOfExchanges:190,
     sparkline: 
@@ -46,6 +71,16 @@ const token =
     coinrankingUrl:"https://coinranking.com/coin/Qwsogvtv82FCd+bitcoin-btc",
   }
 
+  export const data = [
+    {x: 1453075200, y: 1.47}, {x: 1453161600, y: 1.37},
+    {x: 1453248000, y: 1.53}, {x: 1453334400, y: 1.54},
+    {x: 1453420800, y: 1.52}, {x: 1453507200, y: 2.03},
+    {x: 1453593600, y: 2.10}, {x: 1453680000, y: 2.50},
+    {x: 1453766400, y: 2.30}, {x: 1453852800, y: 2.42},
+    {x: 1453939200, y: 2.55}, {x: 1454025600, y: 2.41},
+    {x: 1454112000, y: 2.43}, {x: 1454198400, y: 2.20},
+  ];
+
   function TabButton({ change }) {
     return (
       <View style={styles.coinPercentage(change)}>
@@ -59,6 +94,9 @@ const token =
       </View>
     );
   }
+
+  const sparkline = token.sparkline;
+  const points = monotoneCubicInterpolation({data, range: 40});
 
 const NewsScreen = ({navigation}) => {
   const coin = token;
@@ -102,7 +140,19 @@ const NewsScreen = ({navigation}) => {
     }
   }
 
+  // const formatUSD = value => {
+  //   'worklet';
+  //   if (value === '') {
+  //     const formattedValue = `$${latestCurrentPrice.value.toLocaleString('en-US', { currency: 'USD' })}`
+  //     return formattedValue;
+  //   }
+
+  //   const formattedValue =`$${parseFloat(value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
+  //   return formattedValue;
+  // };
+
   return (
+    
     <SafeAreaView style={styles.safeAreaViewWrapper}>
       <View style={styles.headerWrapper}>
         {/* NAV BUTTONS */}
@@ -128,8 +178,16 @@ const NewsScreen = ({navigation}) => {
           />
         </View>
       </View>
-      <Text>NewsScreen {coin?.price}</Text>
-      <Text>{coin?.name}</Text>
+      
+      {/* CHART */}
+      {/* <ChartPathProvider data={{ points, smoothingStrategy: 'bezier' }}>
+        <ChartYLabel format={formatUSD} style={{backgroundColor: 'black', color: 'green', margin: 4,}}/>
+        <View style={styles.chartWrapper}>
+          <ChartPath height={SIZE / 2} stroke="white" width={SIZE} />
+      <ChartDot style={{ backgroundColor: 'yellow' }} />
+        </View>
+      
+    </ChartPathProvider> */}
       
       {/* JOB TABS */}
       
@@ -165,7 +223,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8, 
     flexDirection: 'column', 
     flex: 1, 
-    maxHeight: 260,
+    maxHeight: 290,
   },
   navButtonContainer: {
     width: '100%',
@@ -189,6 +247,7 @@ const styles = StyleSheet.create({
   headerStats: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingHorizontal: 5,
   },
   coinPercentage: (change) => ({
     color: '#fff',
@@ -208,5 +267,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 800,
   },
-
+  chartWrapper: {
+    marginTop: 40,
+  }
 });

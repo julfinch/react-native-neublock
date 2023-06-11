@@ -26,13 +26,13 @@ export default Stats
 const styles = StyleSheet.create({
   tabTile: {
     color: '#fff',
-    fontSize: '18',
-    fontWeight: '800',
+    fontSize: 18,
+    fontWeight: 800,
     marginBottom: 4,
   },
   tabDesc: {
     color: '#fff',
-    fontSize: '10',
+    fontSize: 10,
     marginBottom: 17,
   },
   statWrapper: {
