@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable, View, Text, TextInput,SafeAreaView, TouchableOpacity, ScrollView, FlatList, ActivityIndicator, } from 'react-native'
+import { StyleSheet, Pressable,Image, ImageBackground, View, Text, TextInput,SafeAreaView, TouchableOpacity, ScrollView, FlatList, ActivityIndicator, } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CryptocurrencyCard from '../../components/cards/CryptocurrencyCard';
@@ -149,27 +149,32 @@ const data = [
 ]
 
 
-const NftScreen = () => {
+const NftScreen = ({navigation}) => {
   const [cryptos, setCryptos] = useState([])
 
   return (
-    <SafeAreaView style={styles.safeAreaViewWrapper}>
-      <View style={styles.headerWrapper}>
-        <Image
-          source={{
-              uri: headerBg,
-          }}
-          className="h-7 w-7 bg-gray-300 p-4 rounded-full"
-        />
-        <View style={styles.container}>
-          <Text style={styles.title}>
-            Top 100 Cryptocurrencies
-          </Text>
-          <TouchableOpacity onPress={() => navigation.openDrawer()} style={{width: '10%', }}>
-            <Ionicons name="list-circle-outline" color="#fff" size={33} style={{textAlign: 'right'}}/>
-          </TouchableOpacity>
-        </View>
-      </View>
+    <View style={styles.safeAreaViewWrapper}>
+      <ImageBackground
+          source={require('../../assets/doodles-bg.png')}
+          style={{ height: 140, paddingHorizontal: 5,}}>
+          
+          {/* NAV BUTTONS */}
+          <View style={styles.navButtonContainer}>
+              <TouchableOpacity style={{alignItems: 'center', justifyContent: 'center', borderColor: '#fff', borderRadius: 7,padding: 0, backgroundColor: 'rgba(255,255,255,0.7)'}} onPress={() => navigation.navigate('Nft')}>
+                <Ionicons name="chevron-back-outline" color="#000" size={33}/>
+              </TouchableOpacity>
+              
+              <TouchableOpacity style={{alignItems: 'center', justifyContent: 'center', borderColor: '#fff', borderRadius: 7,padding: 0, backgroundColor: 'rgba(255,255,255,0.7)'}} onPress={() => navigation.openDrawer()}>
+                <Ionicons name="menu-outline" color="#000" size={33}/>
+              </TouchableOpacity>
+          </View>
+
+          <Image
+            source={require('../../assets/doodles-pic.png')}
+            style={{ height: 80, width: 80,marginTop: 0, borderRadius: 50, borderColor: '#fff', borderWidth: 4,}}
+          />
+        </ImageBackground>
+      
       <ScrollView style={styles.scrollViewWrapper} showsVerticalScrollIndicator={false}>
         <Pressable style={{paddingBottom: 20,}}>
           {cryptos?.map((token) => (
@@ -181,7 +186,7 @@ const NftScreen = () => {
             ))}
         </Pressable>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   )
 }
 
@@ -191,6 +196,15 @@ const styles = StyleSheet.create({
   safeAreaViewWrapper: {
     flex:1, 
     backgroundColor: '#7b00ff'
+  },
+  navButtonContainer: {
+    marginTop: 20,
+    width: '100%',
+    marginBottom: 0,
+    height: '26%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   headerWrapper: {
     paddingHorizontal: 8, 

@@ -168,7 +168,7 @@ const CryptocurrencyScreen = () => {
             Top 100 Cryptocurrencies
           </Text>
           <TouchableOpacity onPress={() => navigation.openDrawer()} style={{width: '10%', }}>
-            <Ionicons name="list-circle-outline" color="#fff" size={33} style={{textAlign: 'right'}}/>
+            <Ionicons name="menu-outline" color="#fff" size={33} style={{textAlign: 'right'}}/>
           </TouchableOpacity>
         </View>
         <View style={styles.searchWrapper}>
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8, 
     flexDirection: 'column', 
     flex: 1, 
-    marginTop: 30,
+    marginTop: 20,
     marginBottom: 0,
     minHeight: 110,
   },

@@ -169,7 +169,7 @@ const NewsScreen = ({navigation}) => {
               <Text style={styles.title}>{coin?.name}{coinId}</Text>
             </View>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
-              <Ionicons name="list-circle-outline" color="#fff" size={33}/>
+              <Ionicons name="menu-outline" color="#fff" size={33}/>
             </TouchableOpacity>
         </View>
 
