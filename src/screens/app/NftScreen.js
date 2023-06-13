@@ -177,7 +177,7 @@ const NftScreen = ({navigation}) => {
   return (
     <ScrollView  showsVerticalScrollIndicator={false} style={styles.safeAreaViewWrapper}>
       <ImageBackground
-          source={require('../../assets/doodles-bg.png')}
+          source={{uri: collection?.banner_image_url}}
           style={{ height: 140, paddingHorizontal: 5, position: 'relative',}}>
           
           {/* NAV BUTTONS */}
@@ -190,8 +190,7 @@ const NftScreen = ({navigation}) => {
                 <Ionicons name="menu-outline" color="#000" size={33}/>
               </TouchableOpacity>
           </View>
-            <Image
-            source={require('../../assets/doodles-pic.png')}
+            <Image source={{uri: collection?.image_url}}
             style={styles.assetImage}
           />
           
