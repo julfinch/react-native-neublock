@@ -198,7 +198,7 @@ const NewsScreen = ({navigation}) => {
         
       </ChartPathProvider> */}
         
-        {/* JOB TABS */}
+        {/* CRYPTO TABS */}
             <View style={{ padding: 16,}}>
               <CryptoTabs
                 tabs={tabs}
