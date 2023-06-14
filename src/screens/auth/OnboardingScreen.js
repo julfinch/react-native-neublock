@@ -90,7 +90,7 @@ const OnboardingScreen = ({navigation}) => {
             {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
               <Text style={styles.buttonText}>Let's start</Text>
             </TouchableOpacity> */}
-            <CustomButton label={"Let's start"} onPress={() => navigation.navigate('Login')}/>
+            <CustomButton width={'80%'} label={"Let's start"} onPress={() => navigation.navigate('Login')}/>
 
           </Animated.View>
       </ImageBackground>

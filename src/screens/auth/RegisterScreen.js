@@ -1,21 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
+  Image,
   SafeAreaView,
+  ScrollView,
   View,
   Text,
   TextInput,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import CustomButton from '../../../src/components/CustomButton';
 import InputField from '../../../src/components/InputField';
 
-const LoginScreen = ({navigation}) => {
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+const RegisterScreen = ({navigation}) => {
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
+  const [dobLabel, setDobLabel] = useState('Date of Birth');
+
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center', backgroundColor: '#7b00ff'}}>
       <View style={{paddingHorizontal: 25, height: '30%', paddingTop: 50 }}>
@@ -42,44 +48,17 @@ const LoginScreen = ({navigation}) => {
             color: '#fff',
             marginBottom: 20,
           }}>
-          account details 
+          personal details 
         </Text>
-        <Text style={styles.textProvide}>Provide your credentials below</Text>
+        <Text style={styles.textProvide}>Register by providing your credentials below</Text>
       </View>
-
-      <View style={{paddingTop: 60,paddingHorizontal: 25, backgroundColor: '#212244', height: '70%' }}>
-        <InputField
-          label={'Email ID'}
-          icon={
-            <MaterialIcons
-            name="alternate-email"
-            size={20}
-            color="#666"
-            style={{marginRight: 5}}
-          />
-          }
-          keyboardType="email-address"
-        />
-        <InputField
-          label={'Password'}
-          icon={
-            <Ionicons
-            name="ios-lock-closed-outline"
-            size={20}
-            color="#666"
-            style={{marginRight: 5}}
-          />
-          }
-          inputType="password"
-          fieldButtonLabel={"Forgot?"}
-          fieldButtonFunction={() => {}}
-          style={{marginBottom: 50,}}
-        />
-        <CustomButton width={'100%'} label={"Login"} onPress={() => {}}/>
-
-        <Text style={{textAlign: 'center', color: '#fff', marginVertical: 60,  fontSize: 17,}}>
-          or login with ...
-        </Text>
+      
+      
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{paddingTop: 30,paddingHorizontal: 25, backgroundColor: '#212244', height: '70%' }}>
+        <View style={{alignItems: 'center'}}>
+        </View>
 
         <View
           style={{
@@ -110,23 +89,80 @@ const LoginScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
 
+        <Text style={{textAlign: 'center', color: '#666', marginBottom: 30}}>
+          or register with email ...
+        </Text>
+
+        <InputField
+          label={'First Name'}
+          icon={
+            <Ionicons
+              name="person-outline"
+              size={20}
+              color="#666"
+              style={{marginRight: 5}}
+            />
+          }
+        />
+
+        <InputField
+          label={'Last Name'}
+          icon={
+            <Ionicons
+              name="person-outline"
+              size={20}
+              color="#666"
+              style={{marginRight: 5}}
+            />
+          }
+        />
+
+        <InputField
+          label={'Email ID'}
+          icon={
+            <MaterialIcons
+              name="alternate-email"
+              size={20}
+              color="#666"
+              style={{marginRight: 5}}
+            />
+          }
+          keyboardType="email-address"
+        />
+
+        <InputField
+          label={'Password'}
+          icon={
+            <Ionicons
+              name="ios-lock-closed-outline"
+              size={20}
+              color="#666"
+              style={{marginRight: 5}}
+            />
+          }
+          inputType="password"
+        />
+
+        <CustomButton width={'100%'}  label={'Register'} onPress={() => {}} />
+
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
-            marginBottom: 30,
+            marginVertical: 30,
           }}>
-          <Text style={{color: '#fff',  fontSize: 17,}}>New to the app? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-            <Text style={{color: '#7008CB', fontWeight: '700', fontSize: 17,}}> Register</Text>
+          <Text style={{color: '#fff',  fontSize: 17,}}>Already registered?</Text>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text style={{color: '#7008CB', fontWeight: '700', fontSize: 17,}}> Login</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
+
 
 const styles = StyleSheet.create({
   appName: {
