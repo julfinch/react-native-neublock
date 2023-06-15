@@ -13,7 +13,6 @@ const OnboardingScreen = ({navigation}) => {
   const logoProgress = useSharedValue(0);
   const logoScale = useSharedValue(2);
   const logoPosition = useSharedValue(0);
-  const nameProgress = useSharedValue(0);
   const boxProgress = useSharedValue(0);
   const boxPosition = useSharedValue(25);
 
@@ -29,11 +28,6 @@ const OnboardingScreen = ({navigation}) => {
     }
   }, [])
 
-  const nameReanimatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: nameProgress.value,
-    }
-  }, [])
 
   const boxReanimatedStyle = useAnimatedStyle(() => {
     return {
@@ -43,9 +37,8 @@ const OnboardingScreen = ({navigation}) => {
   })
 
   useEffect(() => {
-    logoProgress.value = withTiming(1, { duration: 3000 });
-    nameProgress.value = withTiming(1, { duration: 3000 })
-    logoScale.value = withTiming(1, { duration: 5000 });
+    logoProgress.value = withTiming(1, { duration: 1000 });
+    logoScale.value = withTiming(1, { duration: 1000 });
     logoPosition.value = withSequence(
       withTiming(0, { duration: 2000 }),
       withTiming(0, { duration: 2000 }),
@@ -68,13 +61,9 @@ const OnboardingScreen = ({navigation}) => {
           source={require('../../assets/onboarding2-bg.png')}
           style={styles.imageBg}>
           
-          <Animated.Image source={require('../../assets/neublock-logo.png')}
+          <Animated.Image source={require('../../assets/images/misc/neublock_logo.png')}
             style={[styles.logo, logoReanimatedStyle]}
           />
-          <Animated.View style={[styles.appName, nameReanimatedStyle]}>
-            <Text style={styles.appNameNeu}>NEU</Text>
-            <Text style={styles.appNameBlock}>BLOCK</Text>
-          </Animated.View>
           
           <Animated.View style={[styles.box, boxReanimatedStyle]}>
             <View style={styles.buildYour}>
@@ -127,8 +116,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     marginTop: 0,
-    width: '20%',
-    height: '10%',
+    width: '35%',
+    height: '17%',
   },
   buildYour: {
     flexDirection: 'row',
@@ -140,7 +129,7 @@ const styles = StyleSheet.create({
     bottom: -25,
     alignItems: 'center',
     width: '90%',
-    height: 400,
+    height: 330,
     backgroundColor: '#2A2B54',
     borderRadius: 10,
     borderWidth: 1,
@@ -150,19 +139,19 @@ const styles = StyleSheet.create({
   },
   build:{
     fontFamily: 'NeueUltrabold',
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 800,
     color: '#29e7f9',
   },
   your:{
     fontFamily: 'NeueUltrabold',
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 800,
     color: '#fff',
   },
   now:{
     fontFamily: 'NeueUltrabold',
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 800,
     color: '#e64bf1',
   },
@@ -174,8 +163,8 @@ const styles = StyleSheet.create({
   },
   desc:{
     textAlign: 'center',
-    marginTop: 50,
-    marginBottom: 70,
+    marginTop: 40,
+    marginBottom: 60,
     fontSize: 14,
     fontWeight: 500,
     color: 'rgba(255,255,255, 0.4)',

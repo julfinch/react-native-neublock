@@ -18,7 +18,7 @@ import InputField from '../../../src/components/InputField';
 const LoginScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center', backgroundColor: '#7b00ff'}}>
-      <View style={{paddingHorizontal: 25, height: '30%', paddingTop: 50 }}>
+      <View style={{paddingHorizontal: 25, height: '30%', paddingTop: 40 }}>
           <View style={styles.appName}>
               <Image source={require('../../assets/neublock-logo.png')}
                 style={styles.logo}
@@ -28,7 +28,7 @@ const LoginScreen = ({navigation}) => {
           </View>
           <Text
           style={{
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: '500',
             color: '#fff',
             marginBottom: -10,
@@ -37,14 +37,14 @@ const LoginScreen = ({navigation}) => {
         </Text>
         <Text
           style={{
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: '500',
             color: '#fff',
             marginBottom: 20,
           }}>
           account details 
         </Text>
-        <Text style={styles.textProvide}>Provide your credentials below</Text>
+        <Text style={styles.textProvide}>Provide your credentials below to Login</Text>
       </View>
 
       <View style={{paddingTop: 60,paddingHorizontal: 25, backgroundColor: '#212244', height: '70%' }}>
@@ -77,7 +77,7 @@ const LoginScreen = ({navigation}) => {
         />
         <CustomButton width={'100%'} label={"Login"} onPress={() => {}}/>
 
-        <Text style={{textAlign: 'center', color: '#fff', marginVertical: 60,  fontSize: 17,}}>
+        <Text style={{textAlign: 'center', color: '#fff', marginVertical: 40,  fontSize: 15,}}>
           or login with ...
         </Text>
 
@@ -116,9 +116,9 @@ const LoginScreen = ({navigation}) => {
             justifyContent: 'center',
             marginBottom: 30,
           }}>
-          <Text style={{color: '#fff',  fontSize: 17,}}>New to the app? </Text>
+          <Text style={{color: '#fff',  fontSize: 15,}}>New to the app? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-            <Text style={{color: '#7008CB', fontWeight: '700', fontSize: 17,}}> Register</Text>
+            <Text style={{color: '#7008CB', fontWeight: '700', fontSize: 15,}}> Register</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -151,9 +151,10 @@ const styles = StyleSheet.create({
     height: 24,
   },
   social: {
-    borderColor: '#ddd',
+    borderColor: '#2A2B54',
     borderWidth: 1,
-    borderRadius: 7,
+    borderRadius: 7, 
+    backgroundColor: '#2A2B54',
     paddingHorizontal: 30,
     paddingVertical: 10,
   },

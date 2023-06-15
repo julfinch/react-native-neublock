@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker'
 
 
 import CustomButton from '../../../src/components/CustomButton';
@@ -18,13 +19,27 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const RegisterScreen = ({navigation}) => {
-  const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
-  const [dobLabel, setDobLabel] = useState('Date of Birth');
+
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [1,1],
+      quality: 1,
+    });
+    console.log(result);
+
+    if(!result.canceled){
+      setImage(result.uri);
+    }
+  }
 
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center', backgroundColor: '#7b00ff'}}>
-      <View style={{paddingHorizontal: 25, height: '30%', paddingTop: 50 }}>
+      <View style={{paddingHorizontal: 25, height: '30%', paddingTop: 40 }}>
           <View style={styles.appName}>
               <Image source={require('../../assets/neublock-logo.png')}
                 style={styles.logo}
@@ -34,7 +49,7 @@ const RegisterScreen = ({navigation}) => {
           </View>
           <Text
           style={{
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: '500',
             color: '#fff',
             marginBottom: -10,
@@ -43,7 +58,7 @@ const RegisterScreen = ({navigation}) => {
         </Text>
         <Text
           style={{
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: '500',
             color: '#fff',
             marginBottom: 20,
@@ -56,11 +71,21 @@ const RegisterScreen = ({navigation}) => {
       
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{paddingTop: 30,paddingHorizontal: 25, backgroundColor: '#212244', height: '70%' }}>
+        style={{paddingTop: 20,paddingHorizontal: 25, backgroundColor: '#212244', height: '70%' }}>
         <View style={{alignItems: 'center'}}>
         </View>
 
-        <View
+        <TouchableOpacity
+            onPress={pickImage}
+            style={styles.avatarWrapper}>
+              {image ? <Image source={{ uri: image}}
+              style={styles.avatar}
+              /> : <Image source={require('../../assets/images/misc/avatar_blank.png')}
+              style={styles.avatar}
+              />}
+          </TouchableOpacity>
+
+        {/* <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -87,10 +112,10 @@ const RegisterScreen = ({navigation}) => {
               style={styles.socLogo}
               />
           </TouchableOpacity>
-        </View>
+        </View> */}
 
-        <Text style={{textAlign: 'center', color: '#666', marginBottom: 30}}>
-          or register with email ...
+        <Text style={{textAlign: 'center', color: '#666', marginVertical: 10}}>
+          Add photo
         </Text>
 
         <InputField
@@ -149,11 +174,11 @@ const RegisterScreen = ({navigation}) => {
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
-            marginVertical: 30,
+            marginVertical: 20,
           }}>
-          <Text style={{color: '#fff',  fontSize: 17,}}>Already registered?</Text>
+          <Text style={{color: '#fff',  fontSize: 15,}}>Already registered?</Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={{color: '#7008CB', fontWeight: '700', fontSize: 17,}}> Login</Text>
+            <Text style={{color: '#7008CB', fontWeight: '700', fontSize: 15,}}> Login</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -196,5 +221,14 @@ const styles = StyleSheet.create({
   socLogo: {
     width: 20,
     height: 20,
+  },
+  avatar: {borderColor: '#ddd',
+  borderWidth: 1,
+  borderRadius: 50,
+    width: 80,
+    height: 80,
+  },
+  avatarWrapper: {
+    alignItems: 'center',
   },
 });

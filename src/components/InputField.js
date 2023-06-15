@@ -16,7 +16,7 @@ export default function InputField({
         borderBottomColor: '#ccc',
         borderBottomWidth: 1,
         paddingBottom: 8,
-        marginBottom: 25,
+        marginBottom: 18,
       }}>
       {icon}
       {inputType == 'password' ? (
@@ -24,7 +24,7 @@ export default function InputField({
           placeholder={label}
           placeholderTextColor='#fff'
           keyboardType={keyboardType}
-          style={{flex: 1, paddingVertical: 0, color: '#fff', fontSize: 17, }}
+          style={{flex: 1, paddingVertical: 0, color: '#fff', fontSize: 16, }}
           secureTextEntry={true}
         />
       ) : (
@@ -32,11 +32,11 @@ export default function InputField({
           placeholder={label}
           placeholderTextColor='#fff'
           keyboardType={keyboardType}
-          style={{flex: 1, paddingVertical: 0, color: '#fff', fontSize: 17,}}
+          style={{flex: 1, paddingVertical: 0, color: '#fff', fontSize: 16,}}
         />
       )}
       <TouchableOpacity onPress={fieldButtonFunction}>
-        <Text style={{color: '#7008CB', fontWeight: '700', fontSize: 17,}}>{fieldButtonLabel}</Text>
+        <Text style={{color: '#7008CB', fontWeight: '700', fontSize: 16,}}>{fieldButtonLabel}</Text>
       </TouchableOpacity>
     </View>
   );
