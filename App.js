@@ -36,8 +36,8 @@ export default function App() {
   return (
     <SafeAreaProvider onLayout={onLayoutRootView}>
       <NavigationContainer>
-        {/* <AppStack /> */}
-        <AuthStack />
+        <AppStack />
+        {/* <AuthStack /> */}
       </NavigationContainer>
     </SafeAreaProvider>
   );

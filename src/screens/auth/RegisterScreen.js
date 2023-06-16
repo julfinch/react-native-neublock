@@ -17,6 +17,7 @@ import InputField from '../../../src/components/InputField';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import CustomHeader from '../../components/CustomHeader';
 
 const RegisterScreen = ({navigation}) => {
   const [open, setOpen] = useState(false);
@@ -39,35 +40,7 @@ const RegisterScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center', backgroundColor: '#7b00ff'}}>
-      <View style={{paddingHorizontal: 25, height: '30%', paddingTop: 40 }}>
-          <View style={styles.appName}>
-              <Image source={require('../../assets/neublock-logo.png')}
-                style={styles.logo}
-              />
-            <Text style={styles.appNameNeu}>NeuBlock</Text>
-            
-          </View>
-          <Text
-          style={{
-            fontSize: 24,
-            fontWeight: '500',
-            color: '#fff',
-            marginBottom: -10,
-          }}>
-          Enter your
-        </Text>
-        <Text
-          style={{
-            fontSize: 24,
-            fontWeight: '500',
-            color: '#fff',
-            marginBottom: 20,
-          }}>
-          personal details 
-        </Text>
-        <Text style={styles.textProvide}>Register by providing your credentials below</Text>
-      </View>
-      
+      <CustomHeader title={'personal details'} subtitle={'Register by providing your credentials'}/>
       
       <ScrollView
         showsVerticalScrollIndicator={false}

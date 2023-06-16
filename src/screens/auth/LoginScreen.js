@@ -14,38 +14,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import CustomButton from '../../../src/components/CustomButton';
 import InputField from '../../../src/components/InputField';
+import CustomHeader from '../../components/CustomHeader';
 
 const LoginScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center', backgroundColor: '#7b00ff'}}>
-      <View style={{paddingHorizontal: 25, height: '30%', paddingTop: 40 }}>
-          <View style={styles.appName}>
-              <Image source={require('../../assets/neublock-logo.png')}
-                style={styles.logo}
-              />
-            <Text style={styles.appNameNeu}>NeuBlock</Text>
-            
-          </View>
-          <Text
-          style={{
-            fontSize: 24,
-            fontWeight: '500',
-            color: '#fff',
-            marginBottom: -10,
-          }}>
-          Enter your
-        </Text>
-        <Text
-          style={{
-            fontSize: 24,
-            fontWeight: '500',
-            color: '#fff',
-            marginBottom: 20,
-          }}>
-          account details 
-        </Text>
-        <Text style={styles.textProvide}>Provide your credentials below to Login</Text>
-      </View>
+      <CustomHeader title={'account details'} subtitle={'Provide your credentials below to Login'}/>
 
       <View style={{paddingTop: 60,paddingHorizontal: 25, backgroundColor: '#212244', height: '70%' }}>
         <InputField
