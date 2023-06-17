@@ -22,9 +22,12 @@ const HomeScreen = ({navigation}) => {
             <Ionicons name="menu-outline" color="#fff" size={33} style={{textAlign: 'right'}}/>
           </TouchableOpacity>
         </View>
-        <Text style={{fontSize: 18}}>
-            Hello John Doe
-          </Text>
+        <Text style={{color: '#fff',}}>
+            Portfolio
+        </Text>
+        <Text style={{color: '#fff',fontSize: 27, fontWeight: '700',}}>
+            $ 45,000
+        </Text>
       </ScrollView>
     </SafeAreaView>
   )
