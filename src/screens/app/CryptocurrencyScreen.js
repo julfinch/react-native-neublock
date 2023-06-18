@@ -179,11 +179,12 @@ const CryptocurrencyScreen = () => {
       <ScrollView style={styles.scrollViewWrapper} showsVerticalScrollIndicator={false}>
         <Pressable style={{paddingBottom: 20,}}>
           {cryptos?.map((token) => (
+            <TouchableOpacity onPress={() => navigation.navigate("News", {coinId: token.uuid})}>
               <CryptocurrencyCard
                 token={token}
                 key={token.name}
-                handleNavigate={() => navigation.navigate("News", {coinId: token.uuid})}
               />
+              </TouchableOpacity>
             ))}
         </Pressable>
       </ScrollView>

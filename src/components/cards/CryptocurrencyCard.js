@@ -17,9 +17,9 @@ const sparkline = [
   9370.9993109108,
 ]
 
-const CryptocurrencyCard = ({token, handleNavigate }) => {
+const CryptocurrencyCard = ({token }) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={handleNavigate}>
+    <View style={styles.container}>
       {/* LEFT SIDE */}
       <View style={styles.leftContainer}>
         <View style={styles.logoContainer}>
@@ -55,7 +55,7 @@ const CryptocurrencyCard = ({token, handleNavigate }) => {
           </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   )
 }
 
