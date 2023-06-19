@@ -29,39 +29,35 @@ const assets = [
 const HomeScreen = ({navigation}) => {
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#212244', }}>
-      <ScrollView style={{padding: 8}}>
-        <View>
-        <LinearGradient
-        // Background Linear Gradient
-        colors={['rgba(1,1,1,0.8)', '#7b00ff']}
-        style={{backgroundColor: '#7b00ff'}}
-      />
-
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 20, }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItem: 'center', gap: 10, }}>
-              <Image
-                source={require('../../assets/doodles-pic.png')}
-                style={{height: 40, width: 40, borderRadius: 50,borderColor:'#fff',borderWidth: 1, marginBottom: 10}}
-              />
-              <View>
-                <Text style={{color: 'rgba(255,255,255,0.6)'}}>Welcome back</Text>
-                <Text style={{color: '#fff', fontWeight: '700',}}>Lara Turner</Text>
-              </View>
-            </View>
-            <TouchableOpacity onPress={() => navigation.openDrawer()} style={{width: '10%', }}>
-              <Ionicons name="menu-outline" color="#fff" size={33} style={{textAlign: 'right'}}/>
-            </TouchableOpacity>
+    <ScrollView style={{flex: 1, backgroundColor: '#212244', }}>
+      <LinearGradient
+      colors={['rgba(1,1,1,0.8)', '#7b00ff']}
+      style={{paddingHorizontal: 15, paddingVertical: 20, borderBottomLeftRadius: 26, borderBottomRightRadius: 26}}
+      >
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 20, }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'center', alignItem: 'center', gap: 10, }}>
+          <Image
+            source={require('../../assets/doodles-pic.png')}
+            style={{height: 40, width: 40, borderRadius: 50,borderColor:'#fff',borderWidth: 1, marginBottom: 10}}
+          />
+          <View>
+            <Text style={{color: 'rgba(255,255,255,0.6)'}}>Welcome back</Text>
+            <Text style={{color: '#fff', fontWeight: '700',}}>Lara Turner</Text>
           </View>
-          <Text style={{color: '#fff',}}>
-              Portfolio
-          </Text>
-          <Text style={{color: '#fff',fontSize: 27, fontWeight: '700',}}>
-              $ 45,000
-          </Text>
         </View>
+        <TouchableOpacity onPress={() => navigation.openDrawer()} style={{width: '10%', }}>
+          <Ionicons name="menu-outline" color="#fff" size={33} style={{textAlign: 'right'}}/>
+        </TouchableOpacity>
+      </View>
+      <Text style={{color: '#fff',}}>
+          Portfolio
+      </Text>
+      <Text style={{color: '#fff',fontSize: 27, fontWeight: '700',}}>
+          $ 45,000
+      </Text>
+    </LinearGradient>
 
-        <View style={{marginTop: 20}}>
+        <View style={{paddingHorizontal: 15, marginTop: 20}}>
           <Text style={{color: '#fff',fontSize: 18, fontWeight: '700',}}>
               Assets
           </Text>
@@ -74,8 +70,7 @@ const HomeScreen = ({navigation}) => {
               />
             ))}
         </View>
-      </ScrollView>
-    </SafeAreaView>
+    </ScrollView>
   )
 }
 
