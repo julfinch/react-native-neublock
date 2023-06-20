@@ -61,7 +61,7 @@ const HomeScreen = ({navigation}) => {
           <Text style={{color: '#fff',fontSize: 18, fontWeight: '700',}}>
               Assets
           </Text>
-          {assets?.map((asset, index) => (
+          {assets?.map((asset) => (
               <AssetCard
                 token={asset.token}
                 key={asset._id}

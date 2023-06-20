@@ -26,7 +26,7 @@ const CryptoTabs = ({ tabs, activeTab, setActiveTab }) => {
                 onHandleSearchType={() => setActiveTab(item)}
             />
             )}
-        contentContainerStyle={{ width: '100%', justifyContent: 'space-between', padding: 2, borderRadius: 10, backgroundColor: '#2A2B54' }}
+        contentContainerStyle={{ width: '100%', justifyContent: 'space-between', borderRadius: 10, backgroundColor: '#3d3652' }}
         keyExtractor={(item) => item}
     />
     </View>

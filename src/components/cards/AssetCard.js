@@ -36,13 +36,13 @@ const AssetCard = ({ token, amount, price }) => {
             </View>
             <View>
             {/* {imageTitle && <img style={styles.assetsImage}  src={`/src/assets/images/crypto_icons/${imageTitle}.png`} alt={imageTitle} />} */}
-            {imageTitle && 
-                <Image
-                source={{ uri: `../../assets/images/crypto_icons/${imageTitle}.png` }}
+            <Image
+                source={{
+                    uri: "https://res.cloudinary.com/dwxdztigp/image/upload/v1687273090/neublock/crypto-icons/litecoin.png",
+                  }}
                 resizeMode='contain'
-                style={styles.assetsImage} 
+                style={{height: 40, width: 40, borderRadius: 50,borderColor:'#fff',borderWidth: 1, marginBottom: 10}}
             />
-            }
             </View>
         </View>
     )
