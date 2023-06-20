@@ -31,18 +31,19 @@ const AssetCard = ({ token, amount, price }) => {
     return (
         <View style={styles.container}>
             <View style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '2px'}}>
-                <Text style={{color: '#fff'}}>{amount} {token}</Text>
+                <Text style={{color: '#fff', textTransform: 'uppercase'}}>{amount} {token}</Text>
                 <Text style={{color: '#fff'}}>AVERAGE PRICE:$ {price}</Text>
             </View>
             <View>
-            {/* {imageTitle && <img style={styles.assetsImage}  src={`/src/assets/images/crypto_icons/${imageTitle}.png`} alt={imageTitle} />} */}
-            <Image
-                source={{
-                    uri: "https://res.cloudinary.com/dwxdztigp/image/upload/v1687273090/neublock/crypto-icons/litecoin.png",
-                  }}
-                resizeMode='contain'
-                style={{height: 40, width: 40, borderRadius: 50,borderColor:'#fff',borderWidth: 1, marginBottom: 10}}
-            />
+            {imageTitle && 
+                <Image
+                    source={{
+                        uri: `https://res.cloudinary.com/dwxdztigp/image/upload/v1687273090/neublock/crypto-icons/${imageTitle}.png`,
+                    }}
+                    resizeMode='contain'
+                    style={styles.assetsImage}
+                />
+            }
             </View>
         </View>
     )
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     },
     assetsImage: {
         width: 40,
-        marginTop: -10,
+        height: 40,
     },
     // assets-card-add-button{
     // background: var(--bgTertiary) !important;

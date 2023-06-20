@@ -4,6 +4,7 @@ import { Asset } from 'expo-asset';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AssetCard from '../../components/cards/AssetCard';
+import { CoinAssets, CustomTabs, NftAssets } from '../../components';
 
 const assets = [
   {
@@ -27,6 +28,25 @@ const assets = [
 ]
 
 const HomeScreen = ({navigation}) => {
+
+  const tabs = ["Coins", "NFTs"];
+  const [activeTab, setActiveTab] = useState(tabs[0]);
+
+  const displayContentTab = () => {
+    switch (activeTab) {
+      case "Coins":
+        return (
+          <CoinAssets assets={assets ?? ["N/A"]} />
+        );
+      case "Nfts":
+        return (
+          <NftAssets genericStats={genericStats ?? ["N/A"]} />
+        );      
+  
+    default:
+      return null;
+    }
+  }
 
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#212244', }}>
@@ -57,7 +77,16 @@ const HomeScreen = ({navigation}) => {
       </Text>
     </LinearGradient>
 
-        <View style={{paddingHorizontal: 15, marginTop: 20}}>
+    <View style={{ padding: 16,}}>
+      <CustomTabs
+        tabs={tabs}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
+      {displayContentTab()}
+    </View>
+
+        {/* <View style={{paddingHorizontal: 15, marginTop: 20}}>
           <Text style={{color: '#fff',fontSize: 18, fontWeight: '700',}}>
               Assets
           </Text>
@@ -69,7 +98,7 @@ const HomeScreen = ({navigation}) => {
                 price={asset.price}
               />
             ))}
-        </View>
+        </View> */}
     </ScrollView>
   )
 }

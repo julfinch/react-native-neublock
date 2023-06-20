@@ -2,7 +2,7 @@ import { Dimensions, StyleSheet, View, Text, Button, SafeAreaView, TouchableOpac
 import React, { useState } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import millify from 'millify';
-import { Value, About, CryptoTabs, Stats } from '../../components';
+import { Value, About, Stats, CustomTabs } from '../../components';
 import {ChartDot, ChartPath, ChartPathProvider, ChartYLabel, monotoneCubicInterpolation} from '@rainbow-me/animated-charts';
 import { useRoute } from "@react-navigation/native";
 
@@ -200,7 +200,7 @@ const NewsScreen = ({navigation}) => {
         
         {/* CRYPTO TABS */}
             <View style={{ padding: 16,}}>
-              <CryptoTabs
+              <CustomTabs
                 tabs={tabs}
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}

@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, TouchableOpacity, FlatList, Text, View } from "react-native";
 
-function TabButton({ name, activeTab, onHandleSearchType }) {
+function TabButton({ tabs, name, activeTab, onHandleSearchType }) {
     return (
         <TouchableOpacity
-        style={styles.btn(name, activeTab)}
+        style={styles.btn(tabs, name, activeTab)}
         onPress={onHandleSearchType}
         >
-            <Text style={styles.btnText(name, activeTab)}>{name}</Text>
+            <Text style={styles.btnText(tabs, name, activeTab)}>{name}</Text>
         </TouchableOpacity>
     );
 }
 
-const CryptoTabs = ({ tabs, activeTab, setActiveTab }) => {
+const CustomTabs = ({ tabs, activeTab, setActiveTab }) => {
     return (
     <View style={styles.container}>
         <FlatList
@@ -23,6 +23,7 @@ const CryptoTabs = ({ tabs, activeTab, setActiveTab }) => {
             <TabButton
                 name={item}
                 activeTab={activeTab}
+                tabs={tabs}
                 onHandleSearchType={() => setActiveTab(item)}
             />
             )}
@@ -33,24 +34,24 @@ const CryptoTabs = ({ tabs, activeTab, setActiveTab }) => {
     );  
 };
 
-export default CryptoTabs;
+export default CustomTabs;
 
 const styles = StyleSheet.create({
     container: {
         marginVertical: 10,
     },
-    btn: (name, activeTab) => ({
+    btn: (tabs, name, activeTab) => ({
         flexDirection: 'row',
         justifyContent: 'center',
         paddingVertical: 12,
         backgroundColor: name === activeTab ? "#7b00ff" : "#3d3652",
         borderRadius: 10,
-        minWidth: 90,
+        minWidth: tabs.length > 2 ? '33%' : '50%',
         maxHeight: '100%',
         // shadowOffset: {
         // width: 5,
         // height: 2,
-        // },
+        // },+
         // shadowOpacity: 0.25,
         // shadowRadius: 5.84,
         // elevation: 5,
