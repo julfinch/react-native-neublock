@@ -46,7 +46,7 @@ const collection =
   payout_address:"0xdcd382be6cc4f1971c667ffda85c7a287605afe4",
   }
 
-const assets = [
+const nfts = [
   {
     id:349506709,
     name:"Beated Ape #23616",
@@ -220,8 +220,8 @@ const NftScreen = ({navigation}) => {
         </View>
         <Text style={{textAlign: 'center', color: '#fff', fontWeight: 800, fontSize: 17, marginBottom: 13}}>NFTs</Text>
         <View style={styles.assetsGrid}>
-          {assets?.map((asset, index) => (
-            <NftCard asset={asset} key={index}/>
+          {nfts?.map((nft, index) => (
+            <NftCard nft={nft} key={index}/>
           ))}
         </View>
       </View>

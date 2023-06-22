@@ -38,7 +38,6 @@ export default CustomTabs;
 
 const styles = StyleSheet.create({
     container: {
-        marginVertical: 10,
     },
     btn: (tabs, name, activeTab) => ({
         flexDirection: 'row',

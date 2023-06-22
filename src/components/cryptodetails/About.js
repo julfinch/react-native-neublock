@@ -5,7 +5,7 @@ import HTMLReactParser from 'html-react-parser';
 
 const About = ({about}) => {
   return (
-    <View>
+    <View style={{marginTop: 10,}}>
       <Text style={styles.tabTile}>What is {about?.name} ?</Text>
       <Text style={styles.tabDesc}>{HTMLReactParser(about?.description)}</Text>
       <View style={styles.statWrapper}>

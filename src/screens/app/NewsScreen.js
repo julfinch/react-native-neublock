@@ -162,7 +162,7 @@ const NewsScreen = ({navigation}) => {
       <View style={styles.headerWrapper}>
         {/* NAV BUTTONS */}
         <View style={styles.navButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('Cryptocurrency')}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
               <Ionicons name="chevron-back-outline" color="#fff" size={33}/>
             </TouchableOpacity>
             <View>

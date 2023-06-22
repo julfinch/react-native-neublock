@@ -3,7 +3,7 @@ import React from 'react'
 
 const Stats = ({genericStats, coin}) => {
   return (
-    <View>
+    <View style={{marginTop: 10,}}>
       <Text style={styles.tabTile}>Other Stats Info</Text>
       <Text style={styles.tabDesc}>An overview showing the statistics of {coin?.name}, such as the base and quote currency, the rank, and trading volume.</Text>
       <View style={styles.statWrapper}>

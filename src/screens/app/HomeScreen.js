@@ -1,4 +1,4 @@
-import { View, Image, Text, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native'
+import { View, FlatList, StyleSheet, Image, Text, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
 import { Asset } from 'expo-asset';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -31,6 +31,7 @@ const assets = [
 const watchlist = [
   {
     _id: '649418333880dc88c637f293',
+    uuid:"Qwsogvtv82FCd",
     name: 'bitcoin',
     symbol: 'btc',
     currentPrice: '29.4K',
@@ -52,9 +53,128 @@ const watchlist = [
   }
 ]
 
+const nfts = [
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+  {
+    id:349506709,
+    name:"Beated Ape #23616",
+    image_url:"https://lh3.googleusercontent.com/7w8AB56ZITr6hVBbuOOIIMqWj5xPJKBXBGFTdCLQOeE1jn27C-IRXs5zUqPGLXx0caJ-miDl_6SXDAOiFxApI7Oj_wMHwfCrhFvCrgo"
+  },
+]
+
+
 const HomeScreen = ({navigation}) => {
 
-  const tabs = ["Coins", "NFTs"];
+  const tabs = ["Coins", "Nfts"];
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   const displayContentTab = () => {
@@ -65,7 +185,7 @@ const HomeScreen = ({navigation}) => {
         );
       case "Nfts":
         return (
-          <NftAssets genericStats={genericStats ?? ["N/A"]} />
+          <NftAssets nfts={nfts ?? ["N/A"]} />
         );      
   
     default:
@@ -102,22 +222,36 @@ const HomeScreen = ({navigation}) => {
       </Text>
     </LinearGradient>
 
-    <View style={{ padding: 16,}}>
+    {/* WATCHLIST */}
+    <View style={{ paddingHorizontal: 10, }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+        <Text style={styles.sectionHeader}>Watchlist</Text>
+        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => navigation.navigate("Cryptocurrency")}>
+          <Text style={{ color: '#fff'}}>See all coins</Text>
+          <Ionicons name="chevron-forward-outline" color="#fff" size={20}/>
+        </TouchableOpacity>
+      </View>
+    
       <FlatList
         data={watchlist}
         renderItem={({ item }) => (
-          <WatchlistCard
-            item={item}
-            // handleCardPress={handleCardPress}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("News", {coinId: item.uuid})}>
+            <WatchlistCard
+              item={item}
+              // handleCardPress={handleCardPress}
+            />
+          </TouchableOpacity>
         )}
         keyExtractor={(item) => item._id}
-        contentContainerStyle={{ }}
+        contentContainerStyle={{}}
+        showsHorizontalScrollIndicator={false}
         horizontal
       />
     </View>
-
-    <View style={{ padding: 16,}}>
+    
+    {/* ASSETS */}
+    <View style={{ paddingHorizontal: 10,}}>
+    <Text style={styles.sectionHeader}>Assets</Text>
       <CustomTabs
         tabs={tabs}
         activeTab={activeTab}
@@ -144,3 +278,15 @@ const HomeScreen = ({navigation}) => {
 }
 
 export default HomeScreen
+
+
+const styles = StyleSheet.create({
+  sectionHeader: {
+    color: '#fff', 
+    fontSize: 16, 
+    fontWeight: 700, 
+    marginVertical: 10,
+  },
+
+
+});

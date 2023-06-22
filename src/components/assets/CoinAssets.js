@@ -4,7 +4,7 @@ import AssetCard from '../cards/AssetCard'
 
 const CoinAssets = ({ assets }) => {
     return (
-        <View style={{marginTop: 20}}>
+        <View style={{marginTop: 10}}>
             {assets?.map((asset) => (
                 <AssetCard
                 token={asset.token}

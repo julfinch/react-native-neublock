@@ -1,19 +1,19 @@
 import { StyleSheet, View, Image, Text } from 'react-native'
 import React from 'react'
 
-const NftCard = ({asset}) => {
+const NftCard = ({nft}) => {
   return (
     <View style={styles.cardWrapper}>
       <View style={styles.imageWrapper}>
         <Image
           source={{
-            uri: asset?.image_url}}
+            uri: nft?.image_url}}
           style={styles.nftImage}
         />
       </View>
       <View style={styles.textWrapper}>
-        <Text style={styles.cardTextName}>{asset?.name}</Text>
-        <Text style={styles.cardText}>Token ID: {asset?.id}</Text>
+        <Text style={styles.cardTextName}>{nft?.name}</Text>
+        <Text style={styles.cardText}>ID: {nft?.id}</Text>
       </View>
       
     </View>
@@ -26,8 +26,8 @@ export default NftCard
 const styles = StyleSheet.create({
   cardWrapper: {
     flex:1, 
-    backgroundColor: '#7008CB',
-    // backgroundColor: '#2A2B54',
+    // backgroundColor: '#7008CB',
+    backgroundColor: '#2A2B54',
     padding: 7,
     minWidth: '40%',
     height: 190,
@@ -45,15 +45,16 @@ const styles = StyleSheet.create({
   },
   textWrapper: {
     height: '30%',
+    gap:5,
   },  
   cardTextName: {
     color: '#fff',
     textAlign: 'center',
-    fontWeight: 800,
-    fontSize: 15,
+    fontWeight: 700,
+    fontSize: 13,
   },
   cardText: {
-    color: '#fff',
+    color: 'rgba(255,255,255,0.3)',
     textAlign: 'center',
     fontSize: 12,
   },
