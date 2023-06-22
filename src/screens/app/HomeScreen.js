@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AssetCard from '../../components/cards/AssetCard';
 import { CoinAssets, CustomTabs, NftAssets } from '../../components';
+import WatchlistCard from '../../components/cards/WatchlistCard';
 
 const assets = [
   {
@@ -24,6 +25,30 @@ const assets = [
     token: "bitcoin",
     amount: 4000,
     price: 10000,
+  }
+]
+
+const watchlist = [
+  {
+    _id: '649418333880dc88c637f293',
+    name: 'bitcoin',
+    symbol: 'btc',
+    currentPrice: '29.4K',
+    percentChange: '25',
+  },
+  {
+    _id: '649418333880dc88c637f292',
+    name: 'ethereum',
+    symbol: 'eth',
+    currentPrice: '29.4K',
+    percentChange: '-25',
+  },
+  {
+    _id: '649418333880dc88c637f296',
+    name: 'litecoin',
+    symbol: 'ltc',
+    currentPrice: '29.4K',
+    percentChange: '-25',
   }
 ]
 
@@ -76,6 +101,21 @@ const HomeScreen = ({navigation}) => {
           $ 45,000
       </Text>
     </LinearGradient>
+
+    <View style={{ padding: 16,}}>
+      <FlatList
+        data={watchlist}
+        renderItem={({ item }) => (
+          <WatchlistCard
+            item={item}
+            // handleCardPress={handleCardPress}
+          />
+        )}
+        keyExtractor={(item) => item._id}
+        contentContainerStyle={{ }}
+        horizontal
+      />
+    </View>
 
     <View style={{ padding: 16,}}>
       <CustomTabs
