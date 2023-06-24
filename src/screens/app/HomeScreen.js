@@ -176,6 +176,13 @@ const HomeScreen = ({navigation}) => {
 
   const tabs = ["Coins", "Nfts"];
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [selectedCoinWatchlist, setSelectedCoinWatchlist] = useState();
+
+  const handleCardPress = (item) => {
+    navigation.navigate("News", {coinId: item.uuid})
+    // setSelectedJob(item.job_id);
+  };
+
 
   const displayContentTab = () => {
     switch (activeTab) {
@@ -235,15 +242,14 @@ const HomeScreen = ({navigation}) => {
       <FlatList
         data={watchlist}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate("News", {coinId: item.uuid})}>
             <WatchlistCard
               item={item}
-              // handleCardPress={handleCardPress}
+              handleCardPress={handleCardPress}
             />
-          </TouchableOpacity>
+          
         )}
         keyExtractor={(item) => item._id}
-        contentContainerStyle={{}}
+        contentContainerStyle={{ gap: 8}}
         showsHorizontalScrollIndicator={false}
         horizontal
       />

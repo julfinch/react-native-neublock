@@ -1,10 +1,10 @@
-import { View, Text,Image, StyleSheet } from 'react-native'
+import { View, Text,Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const WatchlistCard = ({item}) => {
+const WatchlistCard = ({item, handleCardPress }) => {
   return (
-    <View style={styles.cardWrapper}>
+    <TouchableOpacity style={styles.cardWrapper} onPress={() => handleCardPress(item)}>
         <View style={styles.contentWrapper}>
             <Image
             source={require('../../assets/doodles-pic.png')}
@@ -19,7 +19,7 @@ const WatchlistCard = ({item}) => {
             {item.percentChange > 0 ? (<Text style={{fontSize: 15, color: 'limegreen'}}>{item.percentChange}%</Text>) : (<Text style={{fontSize: 15, color: 'red'}}>{item.percentChange}%</Text>)}
             </View>
         </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
