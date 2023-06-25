@@ -197,7 +197,8 @@ export default CryptocurrencyScreen
 const styles = StyleSheet.create({
   safeAreaViewWrapper: {
     flex:1, 
-    backgroundColor: '#7b00ff'
+    // backgroundColor: '#7b00ff'
+    backgroundColor: '#212244', 
   },
   headerWrapper: {
     paddingHorizontal: 8, 
