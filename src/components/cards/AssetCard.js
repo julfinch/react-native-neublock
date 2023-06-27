@@ -30,7 +30,7 @@ const AssetCard = ({ token, amount, price }) => {
 
     return (
         <View style={styles.container}>
-            <View style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '2px'}}>
+            <View style={styles.assetCardContainer}>
                 <Text style={{color: '#fff', textTransform: 'uppercase'}}>{amount} {token}</Text>
                 <Text style={{color: '#fff'}}>AVERAGE PRICE:$ {price}</Text>
             </View>
@@ -53,6 +53,12 @@ export default AssetCard
 
 
 const styles = StyleSheet.create({
+    assetCardContainer:{
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'space-between', 
+        gap: 2,
+    },
     container: {
         width: '100%',
         flexDirection: 'row',

@@ -197,7 +197,7 @@ const NftScreen = ({navigation}) => {
         </ImageBackground>
       
       <View style={styles.scrollViewWrapper}>
-        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: 20,}}>
+        <View style={styles.linksWrapper}>
           <TouchableOpacity onPress={() => {Linking.openURL(collection?.discord_url);}}>
             <FontAwesome5 name="discord" size={17} color="#fff" />
           </TouchableOpacity>
@@ -262,6 +262,12 @@ const styles = StyleSheet.create({
     borderRadius: 50, 
     borderColor: '#fff', 
     borderWidth: 4,
+  },
+  linksWrapper: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'flex-end', 
+    gap: 20,
   },
   nftName: { 
     // marginTop: 10,

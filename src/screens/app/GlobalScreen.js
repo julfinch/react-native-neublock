@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MyDistricts from '../../components/nft/MyDistricts';
 import { COLORS, FONT, SIZES, images } from "../../../constants";
 import PopularDistricts from '../../components/nft/PopularDistricts';
+import NftCard from '../../components/cards/NftCard';
 
 const myDistricts = [
   {
@@ -91,7 +92,7 @@ const popularDistricts = [
   {
   large_image_url:"https://lh3.googleusercontent.com/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw=s300",
   discord_url:"https://discord.gg/doodles",
-  name:"Doodles",
+  name:"Eskrima",
   telegram_url:null,
   external_url:"https://doodles.app",
   banner_image_url:"https://lh3.googleusercontent.com/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw=s2500",
@@ -130,7 +131,7 @@ const popularDistricts = [
   {
   large_image_url:"https://lh3.googleusercontent.com/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw=s300",
   discord_url:"https://discord.gg/doodles",
-  name:"Doodles",
+  name:"Samurai",
   telegram_url:null,
   external_url:"https://doodles.app",
   banner_image_url:"https://lh3.googleusercontent.com/svc_rQkHVGf3aMI14v3pN-ZTI7uDRwN-QayvixX-nHSMZBgb1L1LReSg1-rXj4gNLJgAB0-yD8ERoT-Q2Gu4cy5AuSg-RdHF9bOxFDw=s2500",
@@ -192,85 +193,77 @@ const GlobalScreen = ({navigation}) => {
         </View>
       </View>
 
-    {/* MY DISTRICTS */}
-    <View style={{ paddingHorizontal: 10, }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-        <Text style={styles.sectionHeader}>My Districts</Text>
-        {/* <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => navigation.navigate("Cryptocurrency")}>
-          <Text style={{ color: '#fff'}}>See all coins</Text>
-          <Ionicons name="chevron-forward-outline" color="#fff" size={20}/>
-        </TouchableOpacity> */}
-      </View>
-    
-      <FlatList
-        data={myDistricts}
-        renderItem={({ item }) => (
-            <MyDistricts
-              item={item}
-              handleCardPress={handleCardPress}
-            />
-          
-        )}
-        keyExtractor={(item) => item._id}
-        contentContainerStyle={{ gap: 15}}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-      />
-    </View>
+      <ScrollView  showsVerticalScrollIndicator={false} style={styles.safeAreaViewWrapper}>
+        {/* MY DISTRICTS */}
+        <View style={{ paddingHorizontal: 10, }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <Text style={styles.sectionHeader}>My Districts</Text>
+            {/* <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => navigation.navigate("Cryptocurrency")}>
+              <Text style={{ color: '#fff'}}>See all coins</Text>
+              <Ionicons name="chevron-forward-outline" color="#fff" size={20}/>
+            </TouchableOpacity> */}
+          </View>
+        
+          <FlatList
+            data={myDistricts}
+            renderItem={({ item }) => (
+                <MyDistricts
+                  item={item}
+                  handleCardPress={handleCardPress}
+                />
+              
+            )}
+            keyExtractor={(item) => item._id}
+            contentContainerStyle={{ gap: 15}}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+          />
+        </View>
 
-    {/* POPULAR DISTRICTS */}
-    <View style={{ paddingHorizontal: 10, marginTop: 20, }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-        <Text style={styles.sectionHeader}>Popular Districts</Text>
-        {/* <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => navigation.navigate("Cryptocurrency")}>
-          <Text style={{ color: '#fff'}}>See all coins</Text>
-          <Ionicons name="chevron-forward-outline" color="#fff" size={20}/>
-        </TouchableOpacity> */}
-      </View>
-    
-      <FlatList
-        data={popularDistricts}
-        renderItem={({ item }) => (
-            <PopularDistricts
-              item={item}
-              handleCardPress={handleCardPress}
-            />
-          
-        )}
-        keyExtractor={(item) => item._id}
-        contentContainerStyle={{ gap: 15}}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-      />
-    </View>
+        {/* POPULAR DISTRICTS */}
+        <View style={{ paddingHorizontal: 10, marginTop: 20, }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <Text style={styles.sectionHeader}>Popular Districts</Text>
+            {/* <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => navigation.navigate("Cryptocurrency")}>
+              <Text style={{ color: '#fff'}}>See all coins</Text>
+              <Ionicons name="chevron-forward-outline" color="#fff" size={20}/>
+            </TouchableOpacity> */}
+          </View>
+        
+          <FlatList
+            data={popularDistricts}
+            renderItem={({ item }) => (
+                <PopularDistricts
+                  item={item}
+                  handleCardPress={handleCardPress}
+                />
+              
+            )}
+            keyExtractor={(item) => item._id}
+            contentContainerStyle={{ gap: 15}}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+          />
+        </View>
 
 
         {/* YOU MIGHT LIKE */}
-        <View style={{ paddingHorizontal: 10, }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-        <Text style={styles.sectionHeader}>You might like</Text>
-        {/* <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => navigation.navigate("Cryptocurrency")}>
-          <Text style={{ color: '#fff'}}>See all coins</Text>
-          <Ionicons name="chevron-forward-outline" color="#fff" size={20}/>
-        </TouchableOpacity> */}
-      </View>
-    
-      <FlatList
-        data={popularDistricts}
-        renderItem={({ item }) => (
-            <PopularDistricts
-              item={item}
-              handleCardPress={handleCardPress}
-            />
-          
-        )}
-        keyExtractor={(item) => item._id}
-        contentContainerStyle={{ gap: 15}}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-      />
-    </View>
-      
+        <View style={{ paddingHorizontal: 10, marginTop: 20, }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <Text style={styles.sectionHeader}>You might like</Text>
+            {/* <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => navigation.navigate("Cryptocurrency")}>
+              <Text style={{ color: '#fff'}}>See all coins</Text>
+              <Ionicons name="chevron-forward-outline" color="#fff" size={20}/>
+            </TouchableOpacity> */}
+          </View>
+        <View style={styles.assetsGrid}>
+          {myDistricts?.map((nft, index) => (
+            <NftCard nft={nft} key={index}/>
+          ))}
+        </View>
+        </View>
+
+      </ScrollView> 
     </SafeAreaView>
   )
 }
@@ -279,13 +272,19 @@ export default GlobalScreen
 
 
 const styles = StyleSheet.create({
+  assetsGrid: {
+    gap: 20,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingBottom: 20,
+  },
   sectionHeader: {
     color: '#fff', 
     fontSize: 16, 
     // fontWeight: 700,
     fontFamily: FONT.neueUltrabold,
     // fontFamily: FONT.medium,
-    marginVertical: 10,
+    marginVertical: 16,
   },
   safeAreaViewWrapper: {
     flex:1, 
@@ -295,7 +294,6 @@ const styles = StyleSheet.create({
   headerWrapper: {
     paddingHorizontal: 8, 
     flexDirection: 'column', 
-    flex: 1, 
     marginTop: 20,
     marginBottom: 0,
     minHeight: 110,

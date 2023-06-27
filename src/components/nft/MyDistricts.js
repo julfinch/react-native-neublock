@@ -21,8 +21,8 @@ export default MyDistricts
 
 const styles = StyleSheet.create({
     image: {
-        height: 40, 
-        width: 40, 
+        height: 60, 
+        width: 60, 
         borderRadius: 50,
         borderColor:'#fff',
         borderWidth: 1,

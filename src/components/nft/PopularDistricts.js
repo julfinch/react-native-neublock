@@ -29,21 +29,14 @@ const PopularDistricts = ({item, handleCardPress }) => {
             <Text style={styles.name}>{item.name}</Text>
         </View>
         <Text style={styles.desc}>{cutParagraph}</Text>
-        <View style={styles.contentWrapper}>
-            <Text style={styles.price}>${item.currentPrice}</Text>
-            <View style={styles.coinPercentage}>
-            {item.percentChange > 0 ? <Ionicons name="caret-up" color="limegreen" size={20} style={styles.caret}/> : <Ionicons name="caret-down" color="red" size={20} />}
-            {item.percentChange > 0 ? (<Text style={{fontSize: 15, color: 'limegreen'}}>{item.percentChange}%</Text>) : (<Text style={{fontSize: 15, color: 'red'}}>{item.percentChange}%</Text>)}
-            </View>
-        </View>
-        <View style={{flexDirection: 'row', alignItems:'center', justifyContent:'center'}}>
+        <View style={{flexDirection: 'row', alignItems:'center', justifyContent:'space-between'}}>
             <View style={{}}>
-                <Text style={{color: COLORS.gray}}>Average price</Text>
-                <Text style={{fontWeight: 500, color: '#fff'}}>{millify(item?.stats.average_price)}</Text>
+                <Text style={{textAlign: 'center',color: COLORS.gray}}>Average price</Text>
+                <Text style={{textAlign: 'center',fontWeight: 500, color: '#fff'}}>{millify(item?.stats.average_price)} ETH</Text>
             </View>
             <View style={{}}>
-                <Text style={{color: COLORS.gray}}>Floor price</Text>
-                <Text style={{fontWeight: 500, color: '#fff'}}>{item?.stats.floor_price}</Text>
+                <Text style={{textAlign: 'center',color: COLORS.gray}}>Floor price</Text>
+                <Text style={{textAlign: 'center',fontWeight: 500, color: '#fff'}}>{item?.stats.floor_price} ETH</Text>
             </View>
         </View>
     </TouchableOpacity>
@@ -68,24 +61,21 @@ const styles = StyleSheet.create({
     },
     cardWrapper: {
         backgroundColor: '#2A2B54',
-        padding: 7,
-        width: 190,
+        padding: 12,
+        width: 240,
         gap: 10,
         height: 180,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#32385E',
-        display: 'flex',
-        // flexDirection: 'column',
-        // flexWrap: 'wrap',
     },
     name: {
         color: '#fff',
-        fontSize: 15,
+        fontSize: 18,
+        fontWeight: 600,
     },
     desc: {
         color: '#fff',
-        fontSize: SIZES.small,
     },
     price: {
         color: '#fff',

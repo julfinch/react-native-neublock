@@ -208,7 +208,7 @@ const HomeScreen = ({navigation}) => {
       style={{paddingHorizontal: 15, paddingVertical: 20, borderBottomLeftRadius: 26, borderBottomRightRadius: 26}}
       >
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 20, }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'center', alignItem: 'center', gap: 10, }}>
+        <View style={styles.profileLeftWrapper}>
           <Image
             source={images.doodles_pic}
             style={{height: 40, width: 40, borderRadius: 50,borderColor:'#fff',borderWidth: 1, marginBottom: 10}}
@@ -291,6 +291,12 @@ export default HomeScreen
 
 
 const styles = StyleSheet.create({
+  profileLeftWrapper: { 
+    flexDirection: 'row', 
+    justifyContent: 'center', 
+    alignItem: 'center', 
+    gap: 10, 
+  },
   sectionHeader: {
     color: '#fff', 
     fontSize: 16, 
